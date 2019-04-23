@@ -5,6 +5,8 @@ import * as express from 'express'
 import * as cors from 'cors'
 import * as morgan from 'morgan'
 
+const PORT = process.env.PORT || 3000
+
 createConnection()
   .then(async connection => {
     const app = express()
@@ -14,7 +16,9 @@ createConnection()
     const allNotes = await note.find({ order: { id: 'ASC' } })
 
     // middlewares
-    app.use(cors())
+    if (process.env.NODE_ENV !== 'production') {
+      app.use(cors())
+    }
     app.use(
       morgan(':method :url :status :res[content-length] - :response-time ms')
     )
@@ -26,6 +30,6 @@ createConnection()
     })
 
     // server
-    app.listen(3000, () => console.log('listening on 3000'))
+    app.listen(PORT, () => console.log(`Server is listening on port: ${PORT}`))
   })
   .catch(error => console.log(error))
