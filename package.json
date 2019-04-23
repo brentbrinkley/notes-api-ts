@@ -1,0 +1,29 @@
+{
+  "name": "notes_api",
+  "version": "0.0.1",
+  "description": "JSON backend for Notes.",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/cors": "^2.8.4",
+    "@types/express": "^4.16.1",
+    "@types/node": "^8.0.29",
+    "cors": "^2.8.5",
+    "nodemon": "^1.18.11",
+    "ts-node": "3.3.0",
+    "tsnodemon": "^1.2.0",
+    "typescript": "2.5.2"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "pg": "^7.3.0",
+    "reflect-metadata": "^0.1.10",
+    "typeorm": "0.2.16"
+  },
+  "scripts": {
+    "start": "nodemon --exec ts-node src/index.ts",
+    "watch": "tsnodemon",
+    "seed": "ts-node src/seed/0-seed.ts",
+    "migrate:up": "ts-node ./node_modules/typeorm/cli.js migration:run",
+    "migrate:down": "ts-node ./node_modules/typeorm/cli.js migration:revert"
+  }
+}
