@@ -11,11 +11,15 @@ createConnection()
   .then(async connection => {
     const app = express()
 
-    // call to database
+    /**
+     * call to database
+     */
     const note = connection.getRepository(Note)
     const allNotes = await note.find({ order: { id: 'ASC' } })
 
-    // middlewares
+    /**
+     * middlewares
+     */
     if (process.env.NODE_ENV !== 'production') {
       app.use(cors())
     }
@@ -23,13 +27,18 @@ createConnection()
       morgan(':method :url :status :res[content-length] - :response-time ms')
     )
 
-    // Routes
+    /**
+     * Routes
+     */
     app.get('/', (_req, res) => {
       res.setHeader('Content-Type', 'application/json')
       res.send(JSON.stringify(allNotes))
     })
 
-    // server
+    /**
+     * server
+     */
+
     app.listen(PORT, () => console.log(`Server is listening on port: ${PORT}`))
   })
   .catch(error => console.log(error))
