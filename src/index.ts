@@ -38,7 +38,6 @@ createConnection()
     /**
      * server
      */
-
     app.listen(PORT, () => console.log(`Server is listening on port: ${PORT}`))
   })
   .catch(error => console.log(error))
