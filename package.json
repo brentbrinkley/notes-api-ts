@@ -25,7 +25,7 @@
   },
   "scripts": {
     "dev:start": "concurrently \" tsc --watch\" \" nodemon build/index.js\" ",
-    "postinstall": "node build/seed/0-seed.js && tsc",
+    "postinstall": "node build/seed/0-seed.js",
     "start": "node build/index.js",
     "watch": "tsnodemon",
     "seed": "node build/seed/0-seed.js",
