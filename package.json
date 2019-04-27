@@ -24,9 +24,9 @@
     "typescript": "2.5.2"
   },
   "scripts": {
-    "start": "concurrently \" tsc --watch\" \" nodemon build/index.js\" ",
+    "dev:start": "concurrently \" tsc --watch\" \" nodemon build/index.js\" ",
     "postinstall": "tsc",
-    "prod:start": "node build/index.js",
+    "start": "node build/index.js",
     "watch": "tsnodemon",
     "seed": "node build/seed/0-seed.js",
     "migrate:up": "node ./node_modules/typeorm/cli.js migration:run",
