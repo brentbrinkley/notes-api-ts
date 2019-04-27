@@ -4,10 +4,21 @@ import { Note } from './entity/Note'
 import * as express from 'express'
 import * as cors from 'cors'
 import * as morgan from 'morgan'
+import 'dotenv/config'
 
-const PORT = process.env.PORT || 3000
+const { PORT, NODE_ENV } = process.env
 
-createConnection()
+createConnection({
+  type: 'postgres',
+  url: process.env.DATABASE_URL || 'postgres://localhost:5432/notes_db',
+  entities: [`${__dirname}/entity/*.js`],
+  migrations: [`${__dirname}migration/*.js`],
+  synchronize: true,
+  cli: {
+    entitiesDir: `${__dirname}/entity`,
+    migrationsDir: `${__dirname}/migration`
+  }
+})
   .then(async connection => {
     const app = express()
 
@@ -20,7 +31,7 @@ createConnection()
     /**
      * middlewares
      */
-    if (process.env.NODE_ENV !== 'production') {
+    if (NODE_ENV !== 'production') {
       app.use(cors())
     }
     app.use(
