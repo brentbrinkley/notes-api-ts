@@ -26,7 +26,6 @@
   "scripts": {
     "start": "node build/index.js",
     "dev": "concurrently \" tsc --watch\" \" nodemon build/index.js\" ",
-    "build": "tsc",
     "seed": "node build/utils/seed.js"
   }
 }
