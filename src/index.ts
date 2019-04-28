@@ -11,13 +11,8 @@ const { PORT, NODE_ENV } = process.env
 createConnection({
   type: 'postgres',
   url: process.env.DATABASE_URL || 'postgres://localhost:5432/notes_db',
-  entities: [`${__dirname}/entity/*.js`],
-  migrations: [`${__dirname}migration/*.js`],
   synchronize: true,
-  cli: {
-    entitiesDir: `${__dirname}/entity`,
-    migrationsDir: `${__dirname}/migration`
-  }
+  entities: [Note]
 })
   .then(async connection => {
     const app = express()

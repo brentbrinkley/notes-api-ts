@@ -24,12 +24,10 @@
     "typescript": "2.5.2"
   },
   "scripts": {
-    "dev": "concurrently \" tsc --watch\" \" nodemon build/index.js\" ",
-    
     "start": "node build/index.js",
-    "watch": "tsnodemon",
-    "seed": "node build/seed/0-seed.js",
-    "migrate:up": "node ./node_modules/typeorm/cli.js migration:run",
-    "migrate:down": "node ./node_modules/typeorm/cli.js migration:revert"
+    "dev": "concurrently \" tsc --watch\" \" nodemon build/index.js\" ",
+    "build": "tsc",
+    "postinstall": "node build/utils/seed.js",
+    "seed": "node build/utils/seed.js"
   }
 }
