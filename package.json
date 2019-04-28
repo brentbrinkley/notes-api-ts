@@ -27,7 +27,6 @@
     "start": "node build/index.js",
     "dev": "concurrently \" tsc --watch\" \" nodemon build/index.js\" ",
     "build": "tsc",
-    "postinstall": "node build/utils/seed.js",
     "seed": "node build/utils/seed.js"
   }
 }
