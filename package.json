@@ -20,7 +20,8 @@
     "morgan": "^1.9.1",
     "pg": "^7.3.0",
     "reflect-metadata": "^0.1.10",
-    "typeorm": "0.2.16"
+    "typeorm": "0.2.16",
+    "typescript": "^3.4.5"
   },
   "scripts": {
     "start": "node build/index.js",
