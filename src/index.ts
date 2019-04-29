@@ -26,9 +26,8 @@ createConnection({
     /**
      * middlewares
      */
-    if (NODE_ENV !== 'production') {
-      app.use(cors())
-    }
+    app.use(cors())
+
     app.use(
       morgan(':method :url :status :res[content-length] - :response-time ms')
     )
